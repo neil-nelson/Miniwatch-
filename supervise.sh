@@ -35,7 +35,7 @@ fi
 
 
 
-MARCHINE=$(hostname)
+MACHINE=$(hostname)
 UTILISATEUR=$(whoami)
 DATE=$(date '+%F %T')
 DEMARRAGE=$(uptime -p)
@@ -46,12 +46,12 @@ NOYAU=$(uname -r)
 MEMOIRE=$(LC_ALL=C free | awk '/^Mem/ {printf "%d", $3 * 100 / $2')
 DISQUE=$(LC_ALL=C df -P / | awk 'NR == 2 {printf $5}' | tr -d '%')
 
-[[ "$MEMOIRE" =~ ^[0-9]+$ ]] || erreur "meesure de la memoire impossible"
+[[ "$MEMOIRE" =~ ^[0-9]+$ ]] || erreur "mesure de la memoire impossible"
 [[ "$DISQUE" =~ ^[0-9]+$ ]] || erreur "mesure du disque impossible"
 
 etat(){
 	if [ "$1" -ge "$3" ]; then
-		echo "CRITUCAL"
+		echo "CRITICAL"
 	elif [ "$1" -ge "$2" ]; then
 		echo "WARNING"
 	else
@@ -59,3 +59,5 @@ etat(){
 	fi
 }
 
+ETAT_MEMOIRE=$(etat "$MEMOIRE"  "$MEMOIRE_WARNING" "$MEMOIRE_CRITICAL")
+ETAT_DISQUE=$(etat "$DISQUE" "$DISQUE_WARNING" "$DISQUE_CRITICAL")
