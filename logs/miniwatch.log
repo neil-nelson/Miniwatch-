@@ -1,0 +1,16 @@
+2026-10-28 20:20:04 | etat=OK | memoire=51 | disque=51
+2026-10-28 20:25:38 | etat=CRITICAL | memoire=54 | disque=51
+2026-10-28 20:35:15 | etat=OK | memoire=54 | disque=51
+2026-10-28 20:39:15 | etat=OK | memoire=54 | disque=51
+2026-10-28 20:40:14 | etat=OK | memoire=51 | disque=51
+2026-10-28 20:43:25 | etat=OK | memoire=54 | disque=51
+2026-10-28 20:45:01 | etat=OK | memoire=54 | disque=51
+2026-10-28 20:45:40 | etat=OK | memoire=54 | disque=51
+2026-10-28 20:48:05 | etat=OK | memoire=54 | disque=51
+2026-10-28 20:56:20 | etat=OK | memoire=48 | disque=51
+2026-10-28 21:23:39 | etat=OK | memoire=54 | disque=51
+2026-10-28 21:25:44 | etat=WARNING | memoire=54 | disque=51
+2026-10-28 21:25:54 | etat=WARNING | memoire=54 | disque=51
+2026-10-28 21:26:34 | etat=CRITICAL | memoire=54 | disque=51
+2026-10-28 21:39:55 | etat=OK | memoire=46 | disque=51
+2026-10-28 21:46:28 | etat=OK | memoire=51 | disque=51

@@ -1,0 +1,17 @@
+======= RAPPORT MINIWATCH =====
+Machine      :
+UTILISATEUR  :neil
+DATE         :2026-10-28 19:33:50
+DEMARRAGE    :up 23 hours, 52 minutes
+CHARGE       :0.11 0.13 0.16 (1 ,5 , 15 min) 
+NOYAU        :7.0.0-38-generic
+    PID USER     COMMAND         %CPU
+  28051 neil     ps               100
+   5761 neil     Isolated Web Co 29.1
+  28028 neil     supervise.sh    15.7
+    PID USER     COMMAND         %MEM
+   5761 neil     Isolated Web Co 39.6
+   2223 neil     gnome-shell      6.6
+   4276 neil     firefox          5.6
+lo 127.0.0.1/8
+enp0s3 10.0.2.15/24

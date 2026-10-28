@@ -1,0 +1,26 @@
+======= RAPPORT MINIWATCH =====
+Machine      :neil-VirtualBox
+UTILISATEUR  :neil
+DATE         :2026-10-28 20:25:37
+DEMARRAGE    :up 1 day, 43 minutes
+CHARGE       :0.34 0.32 0.27 (1 ,5 , 15 min) 
+NOYAU        :7.0.0-38-generic
+Sys. de fichiers Taille Utilisé Dispo Uti% Monté sur
+tmpfs              392M    1,6M  390M   1% /run
+/dev/sda2           25G     12G   12G  51% /
+tmpfs              2,0G    4,0K  2,0G   1% /dev/shm
+tmpfs              5,0M    8,0K  5,0M   1% /run/lock
+dossier_partager   477G    170G  308G  36% /media/sf_dossier_partager
+tmpfs              392M    2,6M  389M   1% /run/user/1000
+/dev/sr0            51M     51M     0 100% /media/neil/VBox_GAs_7.2.18
+    PID USER     COMMAND         %CPU
+   5761 neil     Isolated Web Co 28.4
+  28616 neil     nautilus        10.8
+  28656 neil     supervise.sh     9.0
+    PID USER     COMMAND         %MEM
+   5761 neil     Isolated Web Co 38.4
+   2223 neil     gnome-shell      6.2
+  28616 neil     nautilus         6.2
+lo 127.0.0.1/8
+enp0s3 10.0.2.15/24
+Etat global  :CRITICAL
