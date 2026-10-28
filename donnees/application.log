@@ -1,0 +1,33 @@
+2026-10-13 09:01:00| INFO | database | requete traitee
+2026-10-13 09:02:00| INFO | auth | requete traitee
+2026-10-13 09:03:00| WARNING | web | reponse lente
+2026-10-13 09:04:00| INFO | api | requete traitee
+2026-10-13 09:05:00| ERROR | database | echec de connexion
+2026-10-13 09:06:00| INFO | auth | requete traitee
+2026-10-13 09:07:00| INFO | web | requete traitee
+2026-10-13 09:08:00| WARNING | api | reponse lente
+2026-10-13 09:09:00| INFO | database | requete traitee
+2026-10-13 09:10:00| ERROR | auth | echec de connexion
+2026-10-13 09:11:00| INFO | web | requete traitee
+2026-10-13 09:12:00| INFO | api | requete traitee
+2026-10-13 09:13:00| WARNING | database | reponse lente
+2026-10-13 09:14:00| INFO | auth | requete traitee
+2026-10-13 09:15:00| ERROR | web | echec de connexion
+2026-10-13 09:16:00| INFO | api | requete traitee
+2026-10-13 09:17:00| INFO | database | requete traitee
+2026-10-13 09:18:00| WARNING | auth | reponse lente
+2026-10-13 09:19:00| INFO | web | requete traitee
+2026-10-13 09:20:00| ERROR | api | echec de connexion
+2026-10-13 09:21:00| INFO | database | requete traitee
+2026-10-13 09:22:00| INFO | auth | requete traitee
+2026-10-13 09:23:00| WARNING | web | reponse lente
+2026-10-13 09:24:00| INFO | api | requete traitee
+2026-10-13 09:25:00| ERROR | database | echec de connexion
+2026-10-13 09:26:00| INFO | auth | requete traitee
+2026-10-13 09:27:00| INFO | web | requete traitee
+2026-10-13 09:28:00| WARNING | api | reponse lente
+2026-10-13 09:29:00| INFO | database | requete traitee
+2026-10-13 09:30:00| ERROR | auth | echec de connexion
+2026-10-13 09:31:00 |INFO |api
+2026-10-13 09:32:00 | ERROR | auth | refus en trop | extra 
+
