@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CONF="test_warning.conf"
+CONF="miniwatch.conf"
 RAPPORTS="rapports"
 HISTO="historique/mesures.csv"
 LOG="logs/miniwatch.log"
@@ -65,3 +65,4 @@ ETAT_DISQUE=$(etat  "$DISQUE"  "$DISQUE_WARNING"  "$DISQUE_CRITICAL")
 
 echo "Memoire    :$MEMOIRE % $ETAT_MEMOIRE"
 echo "Disque /   :$DISQUE  % $ETAT_DISQUE"
+
