@@ -5,59 +5,64 @@ RAPPORTS="rapports"
 HISTO="historique/mesures.csv"
 LOG="logs/miniwatch.log"
 
-erreur(){
-	echo "Erreur : $1" >&2
-	exit 3
-}
+#etape1: identité de la machine
 
+echo "MACHINE     :$(hostname)"
+echo "UTILISATEUR  :$(whoami)"
+echo "DATE         :$(date '+%F %T')"
+echo "DEMARRAGE    :$(uptime -p)"
+echo "CHARGE       :$(cut -d' ' -f1-3 /proc/loadavg) (1 ,5 , 15 min) "
+echo "NOYAU        :$(uname -r)"
+
+#etape2:calcul de la  memoire et disque 
+
+MEMOIRE=$(free | awk '/^Mem:/ {printf "%d", $3 * 100 / $2}')
+DISQUE=$(df -P / | awk 'NR == 2 {print $5}' | tr -d '%')
+
+#etape3: seuils et états
+erreur() {
+ echo "Erreur : $1">&2
+ exit 3
+}
 usage(){
 	echo "Usage : $0 [-o REPERTOIRE_RAPPORTS] [-c FICHIER_CONFIG]"
 }
 
-[ -n "$1" ] && CONF="$1"
-
-[ -f "$CONF" ] || erreur "fichier de configuration introuvable : $CONF"
-source "$(realpath "$CONF")"
+if [ -f "$CONF" ]; then
+ source "$CONF"
+else
+  erreur "fichier de configuration introuvable : $CONF"
+ 
+fi
 
 for v in "$DISQUE_WARNING" "$DISQUE_CRITICAL" \
-	"$MEMOIRE_WARNING" "$MEMOIRE_CRISTAL"; do
+	"$MEMOIRE_WARNING" "$MEMOIRE_CRITICAL"; do
 	if ! [[ "$v" =~ ^[0-9]+$ ]]; then
-		erreur "seuil non entier : $v"
+		erreur "seuil non entier : $v "
 	fi
 done
+
 
 if [ "$DISQUE_CRITICAL" -lt "$DISQUE_WARNING" ]; then
 	erreur "DISQUE_CRITICAL ($DISQUE_CRITICAL) < DISQUE_WARNING ($DISQUE_WARNING)"
 fi
+
 if [ "$MEMOIRE_CRITICAL" -lt "$MEMOIRE_WARNING" ]; then
 	erreur "MEMOIRE_CRITICAL ($MEMOIRE_CRITICAL) < MEMOIRE_WARNING ($MEMOIRE_WARNING)"
 fi
 
-
-
-MACHINE=$(hostname)
-UTILISATEUR=$(whoami)
-DATE=$(date '+%F %T')
-DEMARRAGE=$(uptime -p)
-CHARGE=$(cut -d' ' -f1-3 /proc/loadavg)
-CHARGE1=$(cut -d' ' -f1 /proc/loadavg)
-NOYAU=$(uname -r)
-
-MEMOIRE=$(LC_ALL=C free | awk '/^Mem/ {printf "%d", $3 * 100 / $2')
-DISQUE=$(LC_ALL=C df -P / | awk 'NR == 2 {printf $5}' | tr -d '%')
-
-[[ "$MEMOIRE" =~ ^[0-9]+$ ]] || erreur "mesure de la memoire impossible"
-[[ "$DISQUE" =~ ^[0-9]+$ ]] || erreur "mesure du disque impossible"
-
 etat(){
 	if [ "$1" -ge "$3" ]; then
-		echo "CRITICAL"
+		echo " [CRITICAL]"
 	elif [ "$1" -ge "$2" ]; then
-		echo "WARNING"
+		echo "[WARNING]"
 	else
-		echo "OK"
+		echo "[OK]"
 	fi
 }
+ETAT_MEMOIRE=$(etat "$MEMOIRE" "$MEMOIRE_WARNING" "$MEMOIRE_CRITICAL")
+ETAT_DISQUE=$(etat  "$DISQUE"  "$DISQUE_WARNING"  "$DISQUE_CRITICAL")
 
-ETAT_MEMOIRE=$(etat "$MEMOIRE"  "$MEMOIRE_WARNING" "$MEMOIRE_CRITICAL")
-ETAT_DISQUE=$(etat "$DISQUE" "$DISQUE_WARNING" "$DISQUE_CRITICAL")
+echo "Memoire    :$MEMOIRE % $ETAT_MEMOIRE"
+echo "Disque /   :$DISQUE  % $ETAT_DISQUE"
+
