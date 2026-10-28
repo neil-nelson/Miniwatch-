@@ -1,0 +1,13 @@
+2026-10-13 09:01:00|INFO|api|requete traitee
+2026-10-13 09:02:00|ERROR|database|echec de connexion
+2026-10-13 09:03:00|WARNING|web|reponse lente
+2026-10-13 09:04:00|INFO|auth|requete traitee
+2026-10-13 09:05:00|ERROR|api|echec de connexion
+2026-10-13 09:06:00|INFO|web|requete traitee
+2026-10-13 09:07:00|ERROR|auth|echec de connexion
+2026-10-13 09:08:00|WARNING|database|reponse lente
+2026-10-13 09:09:00|INFO|auth|requete traitee
+2026-10-13 09:10:00|ERROR|api|echec de connexion
+2026-10-13 09:11:00|INFO|api
+2026-10-13 09:12:00|ERROR|auth|refus|en trop
+
