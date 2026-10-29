@@ -14,7 +14,7 @@ fi
 
 VALIDES=$(awk -F'|' 'NF == 4' "$Fichier")
 MAL_FORMEES=$(awk -F'|' 'NF != 4' "$Fichier" | wc -l)
-echo "Lignes mal formées : $MAL_FORMEES"
+
 
 ERREURS=$(echo "$VALIDES" | awk -F'|' '$2 == "ERROR"')
 NB_ERREURS=$(echo "$ERREURS" | grep -c 'ERROR')
