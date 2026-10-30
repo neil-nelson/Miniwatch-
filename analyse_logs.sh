@@ -1,6 +1,5 @@
 #!/bin/bash
-#analyse_logs.sh
-#This script will analyse the logs and output the results on a screen
+
 if [ -z "$1" ]; then
    Fichier="donnees/application.log"
 else

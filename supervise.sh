@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CONF="miniwatch.conf"
+CONF="test_warning.conf"
 RAPPORTS="rapports"
 HISTO="historique/mesures.csv"
 LOG="logs/miniwatch.log"
@@ -33,8 +33,6 @@ while getopts "o:c:" option; do
   *) exit 3 ;;
 esac
 done
-
-mkdir -p "$RAPPORTS" 2>/dev/null || erreur "Répertoire inaccessible : $RAPPORTS"
 
 [ -d "$RAPPORTS" ] && [ -w "$RAPPORTS" ] || erreur "Répertoire inaccessible : $RAPPORTS"
 
@@ -95,23 +93,22 @@ esac
 echo "Etat global  :$GLOBAL"
 
 RAPPORT="$RAPPORTS/rapport_$(date +%Y%m%d_%H%M%S).txt"
+ {
+  echo "======= RAPPORT MINIWATCH ====="
+  echo "Machine      :$(hostname)"
+  echo "UTILISATEUR  :$(whoami)"
+  echo "DATE         :$(date '+%F %T')"
+  echo "DEMARRAGE    :$(uptime -p)"
+  echo "CHARGE       :$(cut -d' ' -f1-3 /proc/loadavg) (1 ,5 , 15 min) "
+  echo "NOYAU        :$(uname -r )"
+  df -hP
+  ps -eo pid,user,comm,%cpu --sort=-%cpu | head -n 4
+  ps -eo pid,user,comm,%mem --sort=-%mem | head -n 4
+  ip -4 -o addr show | awk '{print $2, $4}'
+  echo "Etat global  :$GLOBAL"
+ }> "$RAPPORT"
 
-{
- echo "======= RAPPORT MINIWATCH ====="
- echo "Machine      :$(hostname)"
- echo "UTILISATEUR  :$(whoami)"
- echo "DATE         :$(date '+%F %T')"
- echo "DEMARRAGE    :$(uptime -p)"
- echo "CHARGE       :$(cut -d' ' -f1-3 /proc/loadavg) (1 ,5 , 15 min) "
- echo "NOYAU        :$(uname -r)"
- df -hP
- ps -eo pid,user,comm,%cpu --sort=-%cpu | head -n 4
- ps -eo pid,user,comm,%mem --sort=-%mem | head -n 4
- ip -4 -o addr show | awk '{print $2, $4}'
- echo "Etat global  :$GLOBAL"
-}> "$RAPPORT"
-
-echo "Rapport       :$RAPPORT"
+ echo "Rapport       :$RAPPORT"
 echo "$(date '+%F %T') | etat=$GLOBAL | memoire=$MEMOIRE | disque=$DISQUE" >> "$LOG"
 
 

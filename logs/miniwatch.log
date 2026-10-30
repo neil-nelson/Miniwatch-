@@ -14,3 +14,11 @@
 2026-10-28 21:26:34 | etat=CRITICAL | memoire=54 | disque=51
 2026-10-28 21:39:55 | etat=OK | memoire=46 | disque=51
 2026-10-28 21:46:28 | etat=OK | memoire=51 | disque=51
+2026-10-30 15:26:30 | etat=OK | memoire=24 | disque=51
+2026-10-30 15:28:33 | etat=WARNING | memoire=25 | disque=51
+2026-10-30 15:31:01 | etat=WARNING | memoire=26 | disque=51
+2026-10-30 15:32:07 | etat=CRITICAL | memoire=26 | disque=51
+2026-10-30 15:33:12 | etat=CRITICAL | memoire=27 | disque=51
+2026-10-30 15:34:30 | etat=WARNING | memoire=27 | disque=51
+2026-10-30 15:45:14 | etat=WARNING | memoire=27 | disque=51
+2026-10-30 15:53:34 | etat=WARNING | memoire=27 | disque=51
